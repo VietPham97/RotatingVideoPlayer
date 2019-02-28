@@ -18,8 +18,19 @@ class ViewController: UIViewController {
    @IBAction func didPressOpenVideoPlayer(_ sender: UIButton) {
 //      print("openVideoPlayer")
       let videoPlayerController = VideoPlayerController.init(nibName: "VideoPlayerController", bundle: nil)
-      navigationController?.pushViewController(videoPlayerController, animated: true)
+      present(videoPlayerController, animated: true)
    }
    
+   // orientation
+   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+      return .portrait
+   }
+   
+   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+      return .portrait
+   }
+   
+   override var shouldAutorotate: Bool {
+      return true
+   }
 }
-

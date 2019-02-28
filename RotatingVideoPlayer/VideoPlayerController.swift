@@ -43,14 +43,9 @@ class VideoPlayerController: UIViewController {
       ])
    }
    
-   override func viewWillAppear(_ animated: Bool) {
-      navigationController?.setNavigationBarHidden(true, animated: false)
-   }
-   
    @objc fileprivate func backToPrevScreen(_ button: UIButton) {
       playerControllerView.removeFromSuperview()
-      navigationController?.setNavigationBarHidden(false, animated: false)
-      navigationController?.popViewController(animated: true)
+      dismiss(animated: true)
    }
    
    fileprivate func loadVideoPlayerController() {
@@ -103,6 +98,19 @@ class VideoPlayerController: UIViewController {
          self.playerControllerView.avPlayerView.updateVideoLayerFrame()
          
       })
+   }
+   
+   // orientation
+   override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+      return .portrait
+   }
+   
+   override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+      return .portrait
+   }
+   
+   override var shouldAutorotate: Bool {
+      return true
    }
 }
 
