@@ -61,6 +61,7 @@ class VideoPlayerController: UIViewController {
       }
       
       playerControllerView = tempPlayerControllerView
+      playerControllerView.fullscreenDelegate = self
       
       // Small Video Display
       let screenWidth = ScreenHelper.width
@@ -75,6 +76,8 @@ class VideoPlayerController: UIViewController {
          playerControllerView.trailingAnchor.constraint(equalTo: playerContainerView.trailingAnchor),
          playerControllerView.bottomAnchor.constraint(equalTo: playerContainerView.bottomAnchor),
       ])
+      
+      playerControllerView.loadVideo()
    }
    
 
@@ -82,10 +85,10 @@ class VideoPlayerController: UIViewController {
 
 extension VideoPlayerController: VideoFullscreenDelegate {
    func prepareForFullscreen() {
-      
+      print("Controller: prepareForFullscreen")
    }
    
    func prepareForSmallscreen() {
-      
+      print("Controller: prepareForSmallscreen")
    }
 }

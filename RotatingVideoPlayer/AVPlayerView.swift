@@ -23,12 +23,16 @@ class AVPlayerView: UIView {
       }
    }
    
+   func setPlayer(_ player: AVPlayer?) {
+      self.player = player
+   }
+   
    func updateVideoLayerFrame() {
       guard videoLayer != nil else {
          print("videoLayer is nil")
          return
       }
-      
+      print("videoLayer is set")
       videoLayer.frame = CGRect(x: 0, y: 0, width: frame.width, height: frame.height)
    }
    

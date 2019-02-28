@@ -18,25 +18,21 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvk-gp-nbc" customClass="AVPlayerView" customModule="RotatingVideoPlayer" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="0.0" width="513" height="287"/>
-                    <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hym-qq-xhC">
-                            <rect key="frame" x="458" y="249" width="47" height="30"/>
-                            <state key="normal" title="Toggle">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                        </button>
-                    </subviews>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="hym-qq-xhC" secondAttribute="bottom" constant="8" id="EfH-VB-x9S"/>
-                        <constraint firstAttribute="trailing" secondItem="hym-qq-xhC" secondAttribute="trailing" constant="8" id="uw4-l0-0x4"/>
-                    </constraints>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hym-qq-xhC">
+                    <rect key="frame" x="458" y="249" width="47" height="30"/>
+                    <state key="normal" title="Toggle">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="dvk-gp-nbc" firstAttribute="leading" secondItem="JDv-DB-dKe" secondAttribute="leading" id="EEx-mb-4s6"/>
                 <constraint firstItem="JDv-DB-dKe" firstAttribute="bottom" secondItem="dvk-gp-nbc" secondAttribute="bottom" id="Hyk-pX-6UW"/>
+                <constraint firstItem="JDv-DB-dKe" firstAttribute="trailing" secondItem="hym-qq-xhC" secondAttribute="trailing" constant="8" id="OTW-sc-6YR"/>
+                <constraint firstItem="JDv-DB-dKe" firstAttribute="bottom" secondItem="hym-qq-xhC" secondAttribute="bottom" constant="8" id="bIl-z2-KNC"/>
                 <constraint firstItem="dvk-gp-nbc" firstAttribute="top" secondItem="JDv-DB-dKe" secondAttribute="top" id="iBV-ed-of6"/>
                 <constraint firstItem="JDv-DB-dKe" firstAttribute="trailing" secondItem="dvk-gp-nbc" secondAttribute="trailing" id="nfL-t2-1uL"/>
             </constraints>
