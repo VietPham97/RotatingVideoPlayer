@@ -26,7 +26,7 @@ class VideoPlayerController: UIViewController {
    override func viewDidLoad() {
       super.viewDidLoad()
       addBlackBackgroundStatusBar()
-      addVideoPlayerController()
+      loadVideoPlayerController()
    }
 
    fileprivate func addBlackBackgroundStatusBar() {
@@ -52,8 +52,8 @@ class VideoPlayerController: UIViewController {
       navigationController?.setNavigationBarHidden(false, animated: false)
       navigationController?.popViewController(animated: true)
    }
-
-   fileprivate func addVideoPlayerController() {
+   
+   fileprivate func loadVideoPlayerController() {
       guard let tempPlayerControllerView = Bundle.main.loadNibNamed("PlayerControllerView", owner: self, options: nil)?.first as? PlayerControllerView
          else {
             print("Could not load `PlayerControllerView` from Bundle")
@@ -61,8 +61,12 @@ class VideoPlayerController: UIViewController {
       }
       
       playerControllerView = tempPlayerControllerView
+      addVideoPlayerController()
       playerControllerView.fullscreenDelegate = self
-      
+      playerControllerView.loadVideo()
+   }
+
+   fileprivate func addVideoPlayerController() {
       // Small Video Display
       let screenWidth = ScreenHelper.width
       let videoHeight = screenWidth * (9 / 16)
@@ -76,19 +80,46 @@ class VideoPlayerController: UIViewController {
          playerControllerView.trailingAnchor.constraint(equalTo: playerContainerView.trailingAnchor),
          playerControllerView.bottomAnchor.constraint(equalTo: playerContainerView.bottomAnchor),
       ])
-      
-      playerControllerView.loadVideo()
    }
    
-
+   fileprivate func rotateVideoToSmallscreen() {
+      // 1 pretend lanscape full screen
+      let screenWidth = ScreenHelper.width
+      let screenHeight = ScreenHelper.height
+      
+      var transform = self.playerControllerView.transform
+      let scaleT = CGAffineTransform(scaleX: 16/9, y: 16/9)
+      transform = transform.concatenating(scaleT)
+      let tempY = (screenHeight-screenWidth*9/16)/2
+      let translateT = CGAffineTransform(translationX: tempY, y: 0)
+      transform = transform.concatenating(translateT)
+      let rotateT = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
+      self.playerControllerView.transform = transform.concatenating(rotateT)
+      
+      // 2 back to small screen
+      UIView.animate(withDuration: 0.3, animations: {
+         
+         self.playerControllerView.transform = .identity
+         self.playerControllerView.avPlayerView.updateVideoLayerFrame()
+         
+      })
+   }
 }
 
 extension VideoPlayerController: VideoFullscreenDelegate {
    func prepareForFullscreen() {
-      print("Controller: prepareForFullscreen")
+//      print("Controller: prepareForFullscreen")
+      let fullscreenViewController = LandscapeViewController()
+      fullscreenViewController.playerControllerView = self.playerControllerView
+      _ = fullscreenViewController.view
+      present(fullscreenViewController, animated: false)
    }
    
    func prepareForSmallscreen() {
-      print("Controller: prepareForSmallscreen")
+//      print("Controller: prepareForSmallscreen")
+      dismiss(animated: false) {
+         self.addVideoPlayerController()
+         self.rotateVideoToSmallscreen()
+      }
    }
 }

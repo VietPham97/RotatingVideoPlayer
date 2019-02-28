@@ -97,9 +97,9 @@ class PlayerControllerView: UIView {
    
    @objc fileprivate func didPressSizeToggle(_ button: UIButton) {
       if isFullscreen {
-         fullscreenDelegate?.prepareForFullscreen()
-      } else {
          fullscreenDelegate?.prepareForSmallscreen()
+      } else {
+         fullscreenDelegate?.prepareForFullscreen()
       }
       isFullscreen = !isFullscreen
    }
