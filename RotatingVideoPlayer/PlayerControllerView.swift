@@ -19,14 +19,52 @@ class PlayerControllerView: UIView {
    weak var fullscreenDelegate: VideoFullscreenDelegate?
    
    fileprivate var isFullscreen = false
+   fileprivate var isPlaying = false
    fileprivate var player: AVPlayer?
 
+   @IBOutlet weak var playbackControlView: UIView!
    @IBOutlet weak var avPlayerView: AVPlayerView!
+   @IBOutlet weak var playPauseButton: UIButton! {
+      didSet {
+         playPauseButton.addTarget(self, action: #selector(didPressPlayPause), for: .touchUpInside)
+      }
+   }
    @IBOutlet weak var sizeToggleButton: UIButton! {
       didSet {
-         bringSubviewToFront(sizeToggleButton)
          sizeToggleButton.addTarget(self, action: #selector(didPressSizeToggle), for: .touchUpInside)
       }
+   }
+   
+   @objc fileprivate func didPressPlayPause(_ button: UIButton) {
+      if isPlaying {
+         pauseVideo()
+      } else {
+         playVideo()
+      }
+   }
+   
+   fileprivate func cancelDelayHidePlaybackControl() {
+      NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(hidePlaybackControl), object: nil)
+   }
+   
+   fileprivate func delayHidePlaybackControl(after timeInterval: TimeInterval) {
+      perform(#selector(hidePlaybackControl), with: nil, afterDelay: timeInterval)
+   }
+   
+   @objc fileprivate func hidePlaybackControl() {
+      UIView.animate(withDuration: 0.3) {
+         self.playbackControlView.alpha = 0
+      }
+   }
+   
+   fileprivate func showPlaybackControl() {
+      playbackControlView.alpha = 1
+   }
+   
+   override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//      print("touchOnScreenEnded")
+      showPlaybackControl()
+      delayHidePlaybackControl(after: 3)
    }
    
    func loadVideo() {
@@ -73,12 +111,22 @@ class PlayerControllerView: UIView {
       }
    }
    
-   func playVideo() {
+   fileprivate func playVideo() {
+      isPlaying = true
       player?.play()
+      // switch to pause
+      playPauseButton.setImage(#imageLiteral(resourceName: "icon_pause_white"), for: .normal)
+      // delay hiding playback control
+      delayHidePlaybackControl(after: 3)
    }
    
-   func pauseVideo() {
+   fileprivate func pauseVideo() {
+      isPlaying = false
       player?.pause()
+      // switch to play
+      playPauseButton.setImage(#imageLiteral(resourceName: "icon_play_white"), for: .normal)
+      // cancel delay hiding playback control
+      cancelDelayHidePlaybackControl()
    }
    
    func removePlayer() {

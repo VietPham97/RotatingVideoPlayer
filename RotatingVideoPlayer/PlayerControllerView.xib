@@ -20,21 +20,42 @@
                     <rect key="frame" x="0.0" y="0.0" width="513" height="287"/>
                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hym-qq-xhC">
-                    <rect key="frame" x="441" y="242" width="47" height="30"/>
-                    <state key="normal" title="Toggle">
-                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sn9-SV-QHE">
+                    <rect key="frame" x="0.0" y="0.0" width="513" height="287"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hym-qq-xhC">
+                            <rect key="frame" x="441" y="237" width="47" height="30"/>
+                            <state key="normal" title="Toggle">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jh2-9a-auU">
+                            <rect key="frame" x="245.5" y="130.5" width="22" height="26"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="icon_play_white">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.69729313380281688" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="jh2-9a-auU" firstAttribute="centerY" secondItem="Sn9-SV-QHE" secondAttribute="centerY" id="2xX-AO-JzS"/>
+                        <constraint firstAttribute="trailing" secondItem="hym-qq-xhC" secondAttribute="trailing" constant="25" id="gVA-YM-YQL"/>
+                        <constraint firstItem="jh2-9a-auU" firstAttribute="centerX" secondItem="Sn9-SV-QHE" secondAttribute="centerX" id="tCP-jP-8NR"/>
+                        <constraint firstAttribute="bottom" secondItem="hym-qq-xhC" secondAttribute="bottom" constant="20" id="x1C-LF-dQ4"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="JDv-DB-dKe" firstAttribute="bottom" secondItem="Sn9-SV-QHE" secondAttribute="bottom" id="4bh-wl-zKN"/>
                 <constraint firstItem="dvk-gp-nbc" firstAttribute="leading" secondItem="JDv-DB-dKe" secondAttribute="leading" id="EEx-mb-4s6"/>
                 <constraint firstItem="JDv-DB-dKe" firstAttribute="bottom" secondItem="dvk-gp-nbc" secondAttribute="bottom" id="Hyk-pX-6UW"/>
-                <constraint firstItem="JDv-DB-dKe" firstAttribute="trailing" secondItem="hym-qq-xhC" secondAttribute="trailing" constant="25" id="OTW-sc-6YR"/>
-                <constraint firstItem="JDv-DB-dKe" firstAttribute="bottom" secondItem="hym-qq-xhC" secondAttribute="bottom" constant="15" id="bIl-z2-KNC"/>
+                <constraint firstItem="Sn9-SV-QHE" firstAttribute="leading" secondItem="JDv-DB-dKe" secondAttribute="leading" id="LnC-dz-3fW"/>
                 <constraint firstItem="dvk-gp-nbc" firstAttribute="top" secondItem="JDv-DB-dKe" secondAttribute="top" id="iBV-ed-of6"/>
                 <constraint firstItem="JDv-DB-dKe" firstAttribute="trailing" secondItem="dvk-gp-nbc" secondAttribute="trailing" id="nfL-t2-1uL"/>
+                <constraint firstItem="JDv-DB-dKe" firstAttribute="trailing" secondItem="Sn9-SV-QHE" secondAttribute="trailing" id="shK-0b-AGe"/>
+                <constraint firstItem="Sn9-SV-QHE" firstAttribute="top" secondItem="JDv-DB-dKe" secondAttribute="top" id="vwf-Zw-UlO"/>
             </constraints>
             <nil key="simulatedTopBarMetrics"/>
             <nil key="simulatedBottomBarMetrics"/>
@@ -42,9 +63,14 @@
             <viewLayoutGuide key="safeArea" id="JDv-DB-dKe"/>
             <connections>
                 <outlet property="avPlayerView" destination="dvk-gp-nbc" id="e3h-xF-9VJ"/>
+                <outlet property="playPauseButton" destination="jh2-9a-auU" id="Ksn-Eg-1ah"/>
+                <outlet property="playbackControlView" destination="Sn9-SV-QHE" id="zEu-li-SNh"/>
                 <outlet property="sizeToggleButton" destination="hym-qq-xhC" id="WwM-vo-FLJ"/>
             </connections>
             <point key="canvasLocation" x="-212" y="349.47526236881561"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon_play_white" width="22.5" height="26"/>
+    </resources>
 </document>
