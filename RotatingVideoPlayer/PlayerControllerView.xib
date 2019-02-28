@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="d0l-Ag-gmS" customClass="PlayerControllerView" customModule="RotatingVideoPlayer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="513" height="287"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dvk-gp-nbc" customClass="AVPlayerView" customModule="RotatingVideoPlayer" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="513" height="287"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hym-qq-xhC">
+                            <rect key="frame" x="458" y="249" width="47" height="30"/>
+                            <state key="normal" title="Toggle">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="hym-qq-xhC" secondAttribute="bottom" constant="8" id="EfH-VB-x9S"/>
+                        <constraint firstAttribute="trailing" secondItem="hym-qq-xhC" secondAttribute="trailing" constant="8" id="uw4-l0-0x4"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="dvk-gp-nbc" firstAttribute="leading" secondItem="JDv-DB-dKe" secondAttribute="leading" id="EEx-mb-4s6"/>
+                <constraint firstItem="JDv-DB-dKe" firstAttribute="bottom" secondItem="dvk-gp-nbc" secondAttribute="bottom" id="Hyk-pX-6UW"/>
+                <constraint firstItem="dvk-gp-nbc" firstAttribute="top" secondItem="JDv-DB-dKe" secondAttribute="top" id="iBV-ed-of6"/>
+                <constraint firstItem="JDv-DB-dKe" firstAttribute="trailing" secondItem="dvk-gp-nbc" secondAttribute="trailing" id="nfL-t2-1uL"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="JDv-DB-dKe"/>
+            <connections>
+                <outlet property="avPlayerView" destination="dvk-gp-nbc" id="e3h-xF-9VJ"/>
+                <outlet property="sizeToggleButton" destination="hym-qq-xhC" id="WwM-vo-FLJ"/>
+            </connections>
+            <point key="canvasLocation" x="-212" y="349.47526236881561"/>
+        </view>
+    </objects>
+</document>

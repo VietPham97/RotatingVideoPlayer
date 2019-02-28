@@ -7,14 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D219CE7222832450036F92C /* httyd3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8D219CE6222832450036F92C /* httyd3.mp4 */; };
+		8D219CE92228343F0036F92C /* AVPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D219CE82228343F0036F92C /* AVPlayerView.swift */; };
+		8D219CEB2228361B0036F92C /* PlayerControllerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D219CEA2228361B0036F92C /* PlayerControllerView.swift */; };
+		8D219CED222836350036F92C /* PlayerControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D219CEC222836350036F92C /* PlayerControllerView.xib */; };
+		8D219CEF22283A200036F92C /* ScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D219CEE22283A200036F92C /* ScreenHelper.swift */; };
 		8D8329B62214752100CA9846 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8329B52214752100CA9846 /* AppDelegate.swift */; };
 		8D8329B82214752100CA9846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8329B72214752100CA9846 /* ViewController.swift */; };
 		8D8329BB2214752100CA9846 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8329B92214752100CA9846 /* Main.storyboard */; };
 		8D8329BD2214752400CA9846 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D8329BC2214752400CA9846 /* Assets.xcassets */; };
 		8D8329C02214752400CA9846 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8329BE2214752400CA9846 /* LaunchScreen.storyboard */; };
+		8D8329C82214A3C300CA9846 /* PortraitNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8329C72214A3C300CA9846 /* PortraitNavController.swift */; };
+		8D8329CB2214A4EC00CA9846 /* VideoPlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8329C92214A4EC00CA9846 /* VideoPlayerController.swift */; };
+		8D8329CC2214A4EC00CA9846 /* VideoPlayerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D8329CA2214A4EC00CA9846 /* VideoPlayerController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D219CE6222832450036F92C /* httyd3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = httyd3.mp4; sourceTree = "<group>"; };
+		8D219CE82228343F0036F92C /* AVPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVPlayerView.swift; sourceTree = "<group>"; };
+		8D219CEA2228361B0036F92C /* PlayerControllerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControllerView.swift; sourceTree = "<group>"; };
+		8D219CEC222836350036F92C /* PlayerControllerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerControllerView.xib; sourceTree = "<group>"; };
+		8D219CEE22283A200036F92C /* ScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHelper.swift; sourceTree = "<group>"; };
 		8D8329B22214752100CA9846 /* RotatingVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RotatingVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D8329B52214752100CA9846 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D8329B72214752100CA9846 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +35,9 @@
 		8D8329BC2214752400CA9846 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D8329BF2214752400CA9846 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D8329C12214752400CA9846 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D8329C72214A3C300CA9846 /* PortraitNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PortraitNavController.swift; sourceTree = "<group>"; };
+		8D8329C92214A4EC00CA9846 /* VideoPlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerController.swift; sourceTree = "<group>"; };
+		8D8329CA2214A4EC00CA9846 /* VideoPlayerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayerController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +71,16 @@
 			isa = PBXGroup;
 			children = (
 				8D8329B52214752100CA9846 /* AppDelegate.swift */,
+				8D219CEE22283A200036F92C /* ScreenHelper.swift */,
 				8D8329B72214752100CA9846 /* ViewController.swift */,
+				8D8329C92214A4EC00CA9846 /* VideoPlayerController.swift */,
+				8D8329CA2214A4EC00CA9846 /* VideoPlayerController.xib */,
+				8D219CE82228343F0036F92C /* AVPlayerView.swift */,
+				8D219CEA2228361B0036F92C /* PlayerControllerView.swift */,
+				8D219CEC222836350036F92C /* PlayerControllerView.xib */,
+				8D8329C72214A3C300CA9846 /* PortraitNavController.swift */,
 				8D8329B92214752100CA9846 /* Main.storyboard */,
+				8D219CE6222832450036F92C /* httyd3.mp4 */,
 				8D8329BC2214752400CA9846 /* Assets.xcassets */,
 				8D8329BE2214752400CA9846 /* LaunchScreen.storyboard */,
 				8D8329C12214752400CA9846 /* Info.plist */,
@@ -123,7 +147,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D8329C02214752400CA9846 /* LaunchScreen.storyboard in Resources */,
+				8D219CE7222832450036F92C /* httyd3.mp4 in Resources */,
 				8D8329BD2214752400CA9846 /* Assets.xcassets in Resources */,
+				8D219CED222836350036F92C /* PlayerControllerView.xib in Resources */,
+				8D8329CC2214A4EC00CA9846 /* VideoPlayerController.xib in Resources */,
 				8D8329BB2214752100CA9846 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -136,7 +163,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D8329B82214752100CA9846 /* ViewController.swift in Sources */,
+				8D219CEB2228361B0036F92C /* PlayerControllerView.swift in Sources */,
+				8D8329C82214A3C300CA9846 /* PortraitNavController.swift in Sources */,
+				8D219CEF22283A200036F92C /* ScreenHelper.swift in Sources */,
+				8D8329CB2214A4EC00CA9846 /* VideoPlayerController.swift in Sources */,
 				8D8329B62214752100CA9846 /* AppDelegate.swift in Sources */,
+				8D219CE92228343F0036F92C /* AVPlayerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,6 +317,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NGKZPZVQVS;
 				INFOPLIST_FILE = RotatingVideoPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -292,7 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vietpham.RotatingVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -303,6 +336,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NGKZPZVQVS;
 				INFOPLIST_FILE = RotatingVideoPlayer/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -310,7 +344,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.vietpham.RotatingVideoPlayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

@@ -15,6 +15,11 @@ class ViewController: UIViewController {
       // Do any additional setup after loading the view, typically from a nib.
    }
 
-
+   @IBAction func didPressOpenVideoPlayer(_ sender: UIButton) {
+//      print("openVideoPlayer")
+      let videoPlayerController = VideoPlayerController.init(nibName: "VideoPlayerController", bundle: nil)
+      navigationController?.pushViewController(videoPlayerController, animated: true)
+   }
+   
 }
 
