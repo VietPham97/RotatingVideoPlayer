@@ -36,11 +36,20 @@
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rqI-N0-MAF">
+                            <rect key="frame" x="242.5" y="130" width="28" height="27"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <state key="normal" image="icon_replay_white">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" white="0.0" alpha="0.69729313380281688" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="jh2-9a-auU" firstAttribute="centerY" secondItem="Sn9-SV-QHE" secondAttribute="centerY" id="2xX-AO-JzS"/>
+                        <constraint firstItem="rqI-N0-MAF" firstAttribute="centerY" secondItem="Sn9-SV-QHE" secondAttribute="centerY" id="MIN-tI-7tB"/>
                         <constraint firstAttribute="trailing" secondItem="hym-qq-xhC" secondAttribute="trailing" constant="25" id="gVA-YM-YQL"/>
+                        <constraint firstItem="rqI-N0-MAF" firstAttribute="centerX" secondItem="Sn9-SV-QHE" secondAttribute="centerX" id="nzc-ux-9u8"/>
                         <constraint firstItem="jh2-9a-auU" firstAttribute="centerX" secondItem="Sn9-SV-QHE" secondAttribute="centerX" id="tCP-jP-8NR"/>
                         <constraint firstAttribute="bottom" secondItem="hym-qq-xhC" secondAttribute="bottom" constant="20" id="x1C-LF-dQ4"/>
                     </constraints>
@@ -65,6 +74,7 @@
                 <outlet property="avPlayerView" destination="dvk-gp-nbc" id="e3h-xF-9VJ"/>
                 <outlet property="playPauseButton" destination="jh2-9a-auU" id="Ksn-Eg-1ah"/>
                 <outlet property="playbackControlView" destination="Sn9-SV-QHE" id="zEu-li-SNh"/>
+                <outlet property="replayButton" destination="rqI-N0-MAF" id="e9z-Vb-wUu"/>
                 <outlet property="sizeToggleButton" destination="hym-qq-xhC" id="WwM-vo-FLJ"/>
             </connections>
             <point key="canvasLocation" x="-212" y="349.47526236881561"/>
@@ -72,5 +82,6 @@
     </objects>
     <resources>
         <image name="icon_play_white" width="22.5" height="26"/>
+        <image name="icon_replay_white" width="28" height="27"/>
     </resources>
 </document>

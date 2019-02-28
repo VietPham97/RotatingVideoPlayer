@@ -24,6 +24,12 @@ class PlayerControllerView: UIView {
 
    @IBOutlet weak var playbackControlView: UIView!
    @IBOutlet weak var avPlayerView: AVPlayerView!
+   @IBOutlet weak var replayButton: UIButton! {
+      didSet {
+         replayButton.isHidden = true
+         replayButton.addTarget(self, action: #selector(didPressReplay), for: .touchUpInside)
+      }
+   }
    @IBOutlet weak var playPauseButton: UIButton! {
       didSet {
          playPauseButton.addTarget(self, action: #selector(didPressPlayPause), for: .touchUpInside)
@@ -33,6 +39,14 @@ class PlayerControllerView: UIView {
       didSet {
          sizeToggleButton.addTarget(self, action: #selector(didPressSizeToggle), for: .touchUpInside)
       }
+   }
+   
+   @objc fileprivate func didPressReplay(_ button: UIButton) {
+      // restart player at zero
+      player?.seek(to: CMTime.zero)
+      replayButton.isHidden = true
+      playPauseButton.isHidden = false
+      playVideo()
    }
    
    @objc fileprivate func didPressPlayPause(_ button: UIButton) {
@@ -140,7 +154,10 @@ class PlayerControllerView: UIView {
    }
    
    @objc fileprivate func playerItemDidPlayToEnd() {
-      print("Video Playing has ended")
+      isPlaying = false
+      playPauseButton.isHidden = true
+      replayButton.isHidden = false
+      showPlaybackControl()
    }
    
    @objc fileprivate func didPressSizeToggle(_ button: UIButton) {
