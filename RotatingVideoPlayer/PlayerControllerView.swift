@@ -21,7 +21,17 @@ class PlayerControllerView: UIView {
    fileprivate var isFullscreen = false
    fileprivate var isPlaying = false
    fileprivate var player: AVPlayer?
+   fileprivate var totalSeconds: Float64 = 0
 
+   @IBOutlet weak var videoSlider: UISlider! {
+      didSet {
+//         videoSlider.addTarget(self, action: #selector(videoSliderDidChange), for: .valueChanged)
+         videoSlider.addTarget(self, action: #selector(didTouchDownVideoSliderThumb), for: .touchDown)
+         videoSlider.addTarget(self, action: #selector(didTouchUpVideoSliderThumb), for: .touchUpInside)
+         videoSlider.setThumbImage(#imageLiteral(resourceName: "icon_oval_white"), for: .normal)
+         videoSlider.minimumTrackTintColor = .red
+      }
+   }
    @IBOutlet weak var playbackControlView: UIView!
    @IBOutlet weak var avPlayerView: AVPlayerView!
    @IBOutlet weak var replayButton: UIButton! {
@@ -40,6 +50,20 @@ class PlayerControllerView: UIView {
          sizeToggleButton.addTarget(self, action: #selector(didPressSizeToggle), for: .touchUpInside)
       }
    }
+   
+   @objc fileprivate func didTouchDownVideoSliderThumb(_ slider: UISlider) {
+//      print("didTouchDownThumb: \(slider.value)")
+      pauseVideo()
+   }
+   
+   @objc fileprivate func didTouchUpVideoSliderThumb(_ slider: UISlider) {
+//      print("didTouchUpThumb: \(slider.value)")
+      playVideo(at: slider.value)
+   }
+   
+//   @objc fileprivate func videoSliderDidChange(_ slider: UISlider) {
+//      print("OnChange: \(slider.value)")
+//   }
    
    @objc fileprivate func didPressReplay(_ button: UIButton) {
       // restart player at zero
@@ -76,7 +100,6 @@ class PlayerControllerView: UIView {
    }
    
    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-//      print("touchOnScreenEnded")
       showPlaybackControl()
       delayHidePlaybackControl(after: 3)
    }
@@ -105,6 +128,14 @@ class PlayerControllerView: UIView {
          NotificationCenter.default.addObserver(self, selector: #selector(self.playerItemDidPlayToEnd), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
          
          self.player = AVPlayer(playerItem: playerItem)
+         self.player?.addPeriodicTimeObserver(
+            forInterval: CMTime(value: 1, timescale: 2),
+            queue: .main,
+            using: { (currentTime) in
+               let currentSecond = CMTimeGetSeconds(currentTime)
+               let sliderValue = currentSecond / self.totalSeconds
+               self.videoSlider.value = Float(sliderValue)
+         })
          self.player?.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
          self.avPlayerView.setPlayer(self.player)
       }
@@ -119,10 +150,18 @@ class PlayerControllerView: UIView {
             print("Status: Failed")
          } else if currentItem.status == .readyToPlay {
             print("Status: ReadyToPlay")
+            self.totalSeconds = CMTimeGetSeconds(currentItem.duration)
             self.playVideo()
          }
          
       }
+   }
+   
+   fileprivate func playVideo(at value: Float) {
+      let newValue = value * Float(self.totalSeconds)
+      let seekTime = CMTime(value: Int64(newValue), timescale: 1)
+      player?.seek(to: seekTime)
+      playVideo()
    }
    
    fileprivate func playVideo() {
