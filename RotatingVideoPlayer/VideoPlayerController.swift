@@ -19,9 +19,28 @@ class VideoPlayerController: UIViewController {
    
    fileprivate var playerControllerView: PlayerControllerView!
    
+   override var preferredStatusBarStyle: UIStatusBarStyle {
+      return .lightContent
+   }
+   
    override func viewDidLoad() {
       super.viewDidLoad()
+      addBlackBackgroundStatusBar()
       addVideoPlayerController()
+   }
+
+   fileprivate func addBlackBackgroundStatusBar() {
+      let blackView = UIView()
+      blackView.backgroundColor = .black
+      blackView.translatesAutoresizingMaskIntoConstraints = false
+      view.addSubview(blackView)
+      
+      NSLayoutConstraint.activate([
+         blackView.topAnchor.constraint(equalTo: view.topAnchor),
+         blackView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+         blackView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+         blackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+      ])
    }
    
    override func viewWillAppear(_ animated: Bool) {
