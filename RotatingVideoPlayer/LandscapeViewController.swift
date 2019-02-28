@@ -17,6 +17,7 @@ class LandscapeViewController: UIViewController {
 
    override func viewDidLoad() {
       super.viewDidLoad()
+      addPlayerContainerView()
       addVideoPlayerController()
       prepareForVideoControllerViewAnimation()
    }
@@ -63,7 +64,7 @@ class LandscapeViewController: UIViewController {
       // pretent that device is landscapeRight
       playerControllerView.frame = CGRect(x: 0, y: 0, width: screenHeight, height: screenWidth)
       playerControllerView.translatesAutoresizingMaskIntoConstraints = false
-      view.addSubview(playerControllerView)
+      playerContainerView.addSubview(playerControllerView)
       
       NSLayoutConstraint.activate([
          playerControllerView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -73,7 +74,28 @@ class LandscapeViewController: UIViewController {
       ])
    }
    
+   let playerContainerView: UIView = {
+      let v = UIView()
+      v.backgroundColor = .black
+      v.translatesAutoresizingMaskIntoConstraints = false
+      return v
+   }()
+   
+   fileprivate func addPlayerContainerView() {
+      view.addSubview(playerContainerView)
+      NSLayoutConstraint.activate([
+         playerContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+         playerContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+         playerContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+         playerContainerView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+      ])
+   }
+   
    override var prefersStatusBarHidden: Bool {
+      return true
+   }
+   
+   override var prefersHomeIndicatorAutoHidden: Bool {
       return true
    }
    

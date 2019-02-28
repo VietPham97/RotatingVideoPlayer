@@ -90,7 +90,7 @@ class VideoPlayerController: UIViewController {
       var transform = self.playerControllerView.transform
       let scaleT = CGAffineTransform(scaleX: 16/9, y: 16/9)
       transform = transform.concatenating(scaleT)
-      let tempY = (screenHeight-screenWidth*9/16)/2
+      let tempY = (screenHeight - screenWidth * 9 / 16) / 2
       let translateT = CGAffineTransform(translationX: tempY, y: 0)
       transform = transform.concatenating(translateT)
       let rotateT = CGAffineTransform(rotationAngle: CGFloat(Double.pi/2))
