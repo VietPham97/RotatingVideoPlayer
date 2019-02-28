@@ -21,8 +21,15 @@ class PlayerControllerView: UIView {
    fileprivate var isFullscreen = false
    fileprivate var isPlaying = false
    fileprivate var player: AVPlayer?
-   fileprivate var totalSeconds: Float64 = 0
+   fileprivate var totalSeconds: Int = 0 {
+      didSet {
+         totalTimeLabel.displayTime(fromSeconds: totalSeconds)
+      }
+   }
+   fileprivate var timeObserver: Any?
 
+   @IBOutlet weak var currentTimeLabel: UILabel!
+   @IBOutlet weak var totalTimeLabel: UILabel!
    @IBOutlet weak var videoSlider: UISlider! {
       didSet {
 //         videoSlider.addTarget(self, action: #selector(videoSliderDidChange), for: .valueChanged)
@@ -71,6 +78,7 @@ class PlayerControllerView: UIView {
       replayButton.isHidden = true
       playPauseButton.isHidden = false
       playVideo()
+      addVideoTimeObserver()
    }
    
    @objc fileprivate func didPressPlayPause(_ button: UIButton) {
@@ -128,17 +136,22 @@ class PlayerControllerView: UIView {
          NotificationCenter.default.addObserver(self, selector: #selector(self.playerItemDidPlayToEnd), name: .AVPlayerItemDidPlayToEndTime, object: playerItem)
          
          self.player = AVPlayer(playerItem: playerItem)
-         self.player?.addPeriodicTimeObserver(
-            forInterval: CMTime(value: 1, timescale: 2),
-            queue: .main,
-            using: { (currentTime) in
-               let currentSecond = CMTimeGetSeconds(currentTime)
-               let sliderValue = currentSecond / self.totalSeconds
-               self.videoSlider.value = Float(sliderValue)
-         })
+         self.addVideoTimeObserver()
          self.player?.actionAtItemEnd = AVPlayer.ActionAtItemEnd.none
          self.avPlayerView.setPlayer(self.player)
       }
+   }
+   
+   fileprivate func addVideoTimeObserver() {
+      self.timeObserver = self.player?.addPeriodicTimeObserver(
+         forInterval: CMTime(value: 1, timescale: 2),
+         queue: .main,
+         using: { (currentTime) in
+            let currentSecond = CMTimeGetSeconds(currentTime)
+            let sliderValue = currentSecond / Double(self.totalSeconds)
+            self.currentTimeLabel.displayTime(fromSeconds: Int(currentSecond))
+            self.videoSlider.value = Float(sliderValue)
+      })
    }
    
    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -150,7 +163,7 @@ class PlayerControllerView: UIView {
             print("Status: Failed")
          } else if currentItem.status == .readyToPlay {
             print("Status: ReadyToPlay")
-            self.totalSeconds = CMTimeGetSeconds(currentItem.duration)
+            self.totalSeconds = Int(CMTimeGetSeconds(currentItem.duration))
             self.playVideo()
          }
          
@@ -197,6 +210,7 @@ class PlayerControllerView: UIView {
       playPauseButton.isHidden = true
       replayButton.isHidden = false
       showPlaybackControl()
+      player?.removeTimeObserver(self.timeObserver!)
    }
    
    @objc fileprivate func didPressSizeToggle(_ button: UIButton) {

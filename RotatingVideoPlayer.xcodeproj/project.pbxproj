@@ -13,6 +13,7 @@
 		8D219CED222836350036F92C /* PlayerControllerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D219CEC222836350036F92C /* PlayerControllerView.xib */; };
 		8D219CEF22283A200036F92C /* ScreenHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D219CEE22283A200036F92C /* ScreenHelper.swift */; };
 		8D219CF12228466A0036F92C /* LandscapeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D219CF02228466A0036F92C /* LandscapeViewController.swift */; };
+		8D219CF5222883770036F92C /* UILabel+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D219CF4222883770036F92C /* UILabel+Extension.swift */; };
 		8D8329B62214752100CA9846 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8329B52214752100CA9846 /* AppDelegate.swift */; };
 		8D8329B82214752100CA9846 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D8329B72214752100CA9846 /* ViewController.swift */; };
 		8D8329BB2214752100CA9846 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D8329B92214752100CA9846 /* Main.storyboard */; };
@@ -30,6 +31,7 @@
 		8D219CEC222836350036F92C /* PlayerControllerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayerControllerView.xib; sourceTree = "<group>"; };
 		8D219CEE22283A200036F92C /* ScreenHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenHelper.swift; sourceTree = "<group>"; };
 		8D219CF02228466A0036F92C /* LandscapeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandscapeViewController.swift; sourceTree = "<group>"; };
+		8D219CF4222883770036F92C /* UILabel+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extension.swift"; sourceTree = "<group>"; };
 		8D8329B22214752100CA9846 /* RotatingVideoPlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RotatingVideoPlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D8329B52214752100CA9846 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D8329B72214752100CA9846 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				8D8329B52214752100CA9846 /* AppDelegate.swift */,
 				8D219CEE22283A200036F92C /* ScreenHelper.swift */,
+				8D219CF4222883770036F92C /* UILabel+Extension.swift */,
 				8D8329B72214752100CA9846 /* ViewController.swift */,
 				8D219CF02228466A0036F92C /* LandscapeViewController.swift */,
 				8D8329C92214A4EC00CA9846 /* VideoPlayerController.swift */,
@@ -173,6 +176,7 @@
 				8D8329CB2214A4EC00CA9846 /* VideoPlayerController.swift in Sources */,
 				8D8329B62214752100CA9846 /* AppDelegate.swift in Sources */,
 				8D219CE92228343F0036F92C /* AVPlayerView.swift in Sources */,
+				8D219CF5222883770036F92C /* UILabel+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
